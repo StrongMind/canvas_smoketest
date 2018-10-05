@@ -1,5 +1,5 @@
 RSpec.shared_examples "student login" do
-  before(:each) do
+  before(:all) do
     @driver.get "https://courseware-staging.strongmind.com/login/canvas"
     @driver.find_element(:name, "pseudonym_session[unique_id]").click
     @driver.find_element(:name, "pseudonym_session[unique_id]").clear
