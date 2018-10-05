@@ -26,5 +26,8 @@ context "As a student" do
       expect { @driver.find_element(class: 'icon-discussion') }.to_not raise_error
       expect { @driver.find_element(class: 'icon-folder') }.to_not raise_error
     end
+
+    it "I can change the course nickname"
+    it "I can change the course color"
   end
 end
