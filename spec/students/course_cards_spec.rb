@@ -22,11 +22,19 @@ describe "A student course card" do
     expect { @driver.find_element(class: 'sm-DashboardCard__progress-container') }.to_not raise_error
   end
 
-  it 'I can see navigation buttons' do
-    expect { @driver.find_element(class: 'icon-announcement') }.to_not raise_error
-    expect { @driver.find_element(class: 'icon-assignment') }.to_not raise_error
-    expect { @driver.find_element(class: 'icon-discussion') }.to_not raise_error
-    expect { @driver.find_element(class: 'icon-folder') }.to_not raise_error
+  context 'navigation buttons' do
+    it "I can see announcements" do
+      expect { @driver.find_element(class: 'icon-announcement') }.to_not raise_error
+    end
+    it "I can see assignments" do
+      expect { @driver.find_element(class: 'icon-assignment') }.to_not raise_error
+    end
+    it "I can see discussions" do
+      expect { @driver.find_element(class: 'icon-discussion') }.to_not raise_error
+    end
+    it "I can see folder" do
+      expect { @driver.find_element(class: 'icon-folder') }.to_not raise_error
+    end
   end
 
   it "I can change the course nickname"
