@@ -54,17 +54,12 @@ describe "A student viewing a course card" do
     end
   end
 
-  it "I can change the course nickname" do
-    @driver.find_element(class: 'ic-DashboardCard__header-button').click
-    nickname_field = @driver.find_element(id: 'NicknameInput')
 
-    name = 'new_course_name' + Time.now.strftime('%s')
-    nickname_field.clear
-    nickname_field.send_keys(name)
-    @driver.find_element(class: 'Button--primary').click
-    @driver.navigate.refresh
-    sleep(1)
-    expect(@driver.find_element(class: 'ic-DashboardCard__header-title span').text).to eq(name)
+  xit "I can change the course nickname"
+
+  # TODO: THIS SHOULD TEST WHETHER THE VALUE CAN BE CHANGED
+  xit "I can change the course color" do
+    expect { @driver.find_element(css: ".ColorPicker__ColorBlock") }.to_not raise_error
   end
-  it "I can change the course color"
+
 end
