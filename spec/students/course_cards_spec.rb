@@ -37,7 +37,9 @@ describe "A student course card" do
     end
   end
 
-  it "I can change the course nickname"
+  it "I can change the course nickname" do
+    expect { @driver.find_element(css: ".ColorPicker__ColorBlock") }.to_not raise_error
+  end
   it "I can change the course color" do
     expect { @driver.find_element(css: ".ColorPicker__ColorBlock") }.to_not raise_error
   end
