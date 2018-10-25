@@ -54,7 +54,6 @@ describe "A student viewing a course card" do
     end
   end
 
-
   xit "I can change the course nickname"
 
   # TODO: THIS SHOULD TEST WHETHER THE VALUE CAN BE CHANGED
