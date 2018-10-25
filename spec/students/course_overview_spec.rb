@@ -51,27 +51,35 @@ describe "course overview as a student" do
       it "I can see the header column" do
         expect { @driver.find_element(class: 'sm-header-column') }.to_not raise_error
       end
+      
       it "I can see the unit progress container" do
         expect { @driver.find_element(class: 'sm-unit-header_progress-container') }.to_not raise_error
       end
+      
       it "I can see unit title" do
         expect { @driver.find_element(class: 'sm-header-row') }.to_not raise_error
       end
+      
       it "I can see the status icon next to each lesson" do
         expect { @driver.find_element(class: 'module-item-status-icon') }.to_not raise_error
       end
+      
       it "I can see the view calendar button" do
         expect { @driver.find_element(class: 'event-list-view-calendar') }.to_not raise_error
       end
+      
       it "I can see what is coming up in the course" do
         expect { @driver.find_element(class: 'events_list') }.to_not raise_error
       end
+      
       it "I can see the course stream button" do
         expect { @driver.find_element(class: 'course-options') }.to_not raise_error
       end
+      
       it "I can see the breadcrumbs" do
         expect { @driver.find_element(class: 'ic-app-crumbs') }.to_not raise_error
       end
+      
       it "I can see the breadcrumbs" do
         expect { @driver.find_element(class: 'ic-app-crumbs') }.to_not raise_error
       end
@@ -81,14 +89,17 @@ describe "course overview as a student" do
           @driver.find_element(:link, "Discussions").click
           expect { @driver.find_element(class: 'discussion-list') }.to_not raise_error
         end
+        
         it "I can click and view the homepage of the course" do
           @driver.find_element(:link, "Home").click
           expect { @driver.find_element(id: 'course_home_content') }.to_not raise_error
         end
+        
         it "I can click and view the grades in the course" do
           @driver.find_element(:link, "Grades").click
           expect { @driver.find_element(id: 'print-grades-button-container') }.to_not raise_error
         end
+        
         it "I can click and view the syllabus in the course" do
           @driver.find_element(:link, "Syllabus").click
           expect { @driver.find_element(id: 'course_syllabus') }.to_not raise_error
