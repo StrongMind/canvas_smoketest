@@ -53,13 +53,16 @@ describe "course overview as a student" do
         expect { @driver.find_element(class: 'icon-arrow-open-down') }.to_not raise_error
       end
 
+      it "I can see my in-progress lesson is expanded" do
+        expect { @driver.find_element(:css, "i.icon-arrow-open-down") }.to_not raise_error
+      end
+
       it "I can see the header column" do
         expect { @driver.find_element(class: 'sm-header-column') }.to_not raise_error
       end
-<<<<<<< HEAD
 
       it "I can see all of my units" do
-        puts @driver.find_elements(class: 'sm-header-column')
+        @driver.find_elements(class: 'sm-header-column')
         expect ( @driver.find_elements(class: 'sm-header-column').length ) == 5
       end
 
@@ -87,42 +90,11 @@ describe "course overview as a student" do
         expect { @driver.find_element(class: 'course-options') }.to_not raise_error
       end
 
-=======
-      
-      it "I can see the unit progress container" do
-        expect { @driver.find_element(class: 'sm-unit-header_progress-container') }.to_not raise_error
-      end
-      
-      it "I can see unit title" do
-        expect { @driver.find_element(class: 'sm-header-row') }.to_not raise_error
-      end
-      
-      it "I can see the status icon next to each lesson" do
-        expect { @driver.find_element(class: 'module-item-status-icon') }.to_not raise_error
-      end
-      
-      it "I can see the view calendar button" do
-        expect { @driver.find_element(class: 'event-list-view-calendar') }.to_not raise_error
-      end
-      
-      it "I can see what is coming up in the course" do
-        expect { @driver.find_element(class: 'events_list') }.to_not raise_error
-      end
-      
-      it "I can see the course stream button" do
-        expect { @driver.find_element(class: 'course-options') }.to_not raise_error
-      end
-      
-      it "I can see the breadcrumbs" do
+       it "I can see the breadcrumbs" do
         expect { @driver.find_element(class: 'ic-app-crumbs') }.to_not raise_error
       end
-      
->>>>>>> 471f5df233ebc265e107fa5dc634ebf527c10e01
-      it "I can see the breadcrumbs" do
-        expect { @driver.find_element(class: 'ic-app-crumbs') }.to_not raise_error
-      end
+    end
 
-<<<<<<< HEAD
     context 'I can access the primary student pages' do
 
       it "I can click and view the discussions in the course" do
@@ -136,35 +108,13 @@ describe "course overview as a student" do
       end
 
       it "I can click and view the grades in the course" do
-        @driver.find_element(:link, "Grades").click
-        expect { @driver.find_element(id: 'print-grades-button-container') }.to_not raise_error
+        @driver.find_element(:css, "a.grades").click
+        expect { @driver.find_element(:id, "print-grades-button-container") }.to_not raise_error
       end
 
       it "I can click and view the syllabus in the course" do
         @driver.find_element(:link, "Syllabus").click
         expect { @driver.find_element(id: 'course_syllabus') }.to_not raise_error
-=======
-      context 'I can access the primary student pages' do
-        it "I can click and view the discussions in the course" do
-          @driver.find_element(:link, "Discussions").click
-          expect { @driver.find_element(class: 'discussion-list') }.to_not raise_error
-        end
-        
-        it "I can click and view the homepage of the course" do
-          @driver.find_element(:link, "Home").click
-          expect { @driver.find_element(id: 'course_home_content') }.to_not raise_error
-        end
-        
-        it "I can click and view the grades in the course" do
-          @driver.find_element(:link, "Grades").click
-          expect { @driver.find_element(id: 'print-grades-button-container') }.to_not raise_error
-        end
-        
-        it "I can click and view the syllabus in the course" do
-          @driver.find_element(:link, "Syllabus").click
-          expect { @driver.find_element(id: 'course_syllabus') }.to_not raise_error
-        end
->>>>>>> 471f5df233ebc265e107fa5dc634ebf527c10e01
       end
     end
   end
