@@ -13,3 +13,18 @@ def configure_driver
   @driver.manage.timeouts.implicit_wait = 30
   @base_url = "https://courseware-staging.strongmind.com/"
 end
+
+def close_alert_and_get_its_text
+  begin
+    alert = @driver.switch_to.alert()
+    alert_text = alert.text
+    if @accept_next_alert then
+      alert.accept
+    else
+      alert.dismiss
+    end
+    alert_text
+  ensure
+    @accept_next_alert = true
+  end
+end
