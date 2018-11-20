@@ -28,9 +28,10 @@ describe "gradebook as a student" do
       expect { @driver.find_element(:id, "submission_final-grade") }.to_not raise_error
     end
 
-#    it 'I can toggle between calculate based on graded assessments or all assessments' do
-#      @driver.find_element(:id, "only_consider_graded_assignments").click
-#    end
+    it 'I can toggle between calculate based on graded assessments or all assessments' do
+      @driver.find_element(:xpath, "(.//*[normalize-space(text()) and normalize-space(.)='Total'])[2]/following::label[1]").click
+      @driver.find_element(:xpath, "(.//*[normalize-space(text()) and normalize-space(.)='Total'])[2]/following::label[1]").click
+    end
 
 #    it 'I can edit my grade in what-if mode and see how my overall grade changes' do
 #      @driver.find_element(:xpath, "(.//*[normalize-space(text()) and normalize-space(.)='Jul 3 by 12:59am'])[2]/following::span[2]").click
