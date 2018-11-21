@@ -7,7 +7,7 @@ require 'examples/student_examples'
 include RSpec::Expectations
 
 def configure_driver
-  options = Selenium::WebDriver::Firefox::Options.new(args: [])
+  options = Selenium::WebDriver::Firefox::Options.new(args: ['-headless'])
   @driver = Selenium::WebDriver.for :firefox, options: options
   @accept_next_alert = true
   @driver.manage.timeouts.implicit_wait = 30

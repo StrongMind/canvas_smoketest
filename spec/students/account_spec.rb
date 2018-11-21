@@ -18,7 +18,7 @@ describe "account as a student" do
       @driver.find_element(:xpath, "(.//*[normalize-space(text()) and normalize-space(.)='Select Profile Picture'])[1]/following::span[1]").click
     end
 
-    it 'I can add a new contact method' do
+    xit 'I can add a new contact method' do
       @driver.get "https://courseware-staging.strongmind.com/profile/settings"
       @driver.find_element(:link, "Email Address").click
       @driver.find_element(:id, "ui-id-1").click
