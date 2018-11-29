@@ -30,7 +30,41 @@ describe "account as a student" do
     end
   end
 
-  context 'I can access and update my notification settings' do
+  context 'I can access and update my calendar' do
+    it 'I can view my calendar' do
+      @driver.get "https://courseware-staging.strongmind.com/calendar"
+      expect { @driver.find_element(:css, "div.calendar") }.to_not raise_error
+    end
+
+    it 'I can add an event to my calendar' do
+      @driver.get "https://courseware-staging.strongmind.com/calendar"
+      @driver.find_element(:xpath, "(.//*[normalize-space(text()) and normalize-space(.)='Agenda'])[1]/following::i[1]").click
+      expect { @driver.find_element(:css, "button.event_button") }.to_not raise_error
+    end
+
+    it 'I can view events and due dates for assignments in my courses' do
+      expect { @driver.find_element(:css, "i.icon-assignment") }.to_not raise_error
+      expect { @driver.find_element(:css, "span.fc-time") }.to_not raise_error
+      expect { @driver.find_element(:css, "span.fc-title") }.to_not raise_error
+    end
+  end
+
+  context 'I can access and view my inbox' do
+    it 'I can view my messages in the inbox' do
+      @driver.get "https://courseware-staging.strongmind.com/inbox"
+      expect { @driver.find_element(:css, "ul.messages") }.to_not raise_error
+    end
+
+    it 'I can send a message' do
+      @driver.get "https://courseware-staging.strongmind.com/inbox"
+      @driver.find_element(:id, "compose-btn").click
+      expect { @driver.find_element(:css, "button.send-message") }.to_not raise_error
+      @driver.find_element(:xpath, "(.//*[normalize-space(text()) and normalize-space(.)='Compose Message'])[1]/following::i[1]").click
+
+    end
+  end
+
+  context 'I can access and change my notification settings' do
 
     it 'I can change my notification settings' do
       @driver.get "https://courseware-staging.strongmind.com/profile/communication"
@@ -38,6 +72,7 @@ describe "account as a student" do
       @driver.find_element(:xpath, "(.//*[normalize-space(text()) and normalize-space(.)='Due Date'])[1]/following::i[1]").click
       @driver.find_element(:xpath, "(.//*[normalize-space(text()) and normalize-space(.)='Send daily summary'])[2]/following::i[1]").click
     end
+
   end
 
 end
