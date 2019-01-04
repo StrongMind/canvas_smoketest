@@ -1,4 +1,4 @@
-RSpec.shared_examples "student login" do
+RSpec.shared_examples "teacher login" do
   before(:all) do
     @driver.get "https://courseware-staging.strongmind.com/login/canvas"
     @driver.find_element(:name, "pseudonym_session[unique_id]").click
