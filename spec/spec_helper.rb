@@ -8,8 +8,8 @@ require 'examples/teacher_examples'
 include RSpec::Expectations
 
 def configure_driver
-  options = Selenium::WebDriver::Chrome::Options.new(args: ['-headless'])
-  @driver = Selenium::WebDriver.for :chrome, options: options
+  options = Selenium::WebDriver::Firefox::Options.new(args: [ENV['SHOW_BROWSER'] ? nil : '-headless'])
+  @driver = Selenium::WebDriver.for :firefox, options: options
   @accept_next_alert = true
   @driver.manage.timeouts.implicit_wait = 30
   @base_url = "https://courseware-staging.strongmind.com/"
