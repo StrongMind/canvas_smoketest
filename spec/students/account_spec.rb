@@ -21,6 +21,7 @@ describe "account as a student" do
     xit 'I can add a new contact method' do
       @driver.get "https://courseware-staging.strongmind.com/profile/settings"
       @driver.find_element(:link, "Email Address").click
+<<<<<<< HEAD
       @driver.find_element(:id, "ui-id-1").click
       @driver.find_element(:id, "communication_channel_email").click
       @driver.find_element(:id, "communication_channel_email").clear
@@ -75,4 +76,15 @@ describe "account as a student" do
 
   end
 
+=======
+      @driver.find_element(:id, "communication_channel_email").click
+      @driver.find_element(:id, "communication_channel_email").clear
+      @driver.find_element(:id, "communication_channel_email").send_keys "regression1@strongmind.com"
+      @driver.find_element(:xpath, "(.//*[normalize-space(text()) and normalize-space(.)='Email Address'])[2]/following::button[1]").click
+      @driver.find_element(:xpath, "(.//*[normalize-space(text()) and normalize-space(.)='Re-Send Confirmation'])[2]/following::button[1]").click
+      expect { @driver.find_element(:css, "a.email_channel") }.to_not raise_error
+    end
+
+  end
+>>>>>>> master
 end
