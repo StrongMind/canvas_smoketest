@@ -4,6 +4,7 @@ require "selenium-webdriver"
 require "rspec"
 require 'examples/student_examples'
 require 'examples/teacher_examples'
+require 'examples/admin_examples'
 # require 'katalon_helpers'
 include RSpec::Expectations
 
