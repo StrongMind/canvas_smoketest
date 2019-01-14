@@ -21,7 +21,6 @@ describe "account as a student" do
     xit 'I can add a new contact method' do
       @driver.get "https://courseware-staging.strongmind.com/profile/settings"
       @driver.find_element(:link, "Email Address").click
-<<<<<<< HEAD
       @driver.find_element(:id, "ui-id-1").click
       @driver.find_element(:id, "communication_channel_email").click
       @driver.find_element(:id, "communication_channel_email").clear
@@ -43,7 +42,7 @@ describe "account as a student" do
       expect { @driver.find_element(:css, "button.event_button") }.to_not raise_error
     end
 
-    it 'I can view events and due dates for assignments in my courses' do
+    xit 'I can view events and due dates for assignments in my courses' do
       expect { @driver.find_element(:css, "i.icon-assignment") }.to_not raise_error
       expect { @driver.find_element(:css, "span.fc-time") }.to_not raise_error
       expect { @driver.find_element(:css, "span.fc-title") }.to_not raise_error
@@ -75,16 +74,4 @@ describe "account as a student" do
     end
 
   end
-
-=======
-      @driver.find_element(:id, "communication_channel_email").click
-      @driver.find_element(:id, "communication_channel_email").clear
-      @driver.find_element(:id, "communication_channel_email").send_keys "regression1@strongmind.com"
-      @driver.find_element(:xpath, "(.//*[normalize-space(text()) and normalize-space(.)='Email Address'])[2]/following::button[1]").click
-      @driver.find_element(:xpath, "(.//*[normalize-space(text()) and normalize-space(.)='Re-Send Confirmation'])[2]/following::button[1]").click
-      expect { @driver.find_element(:css, "a.email_channel") }.to_not raise_error
-    end
-
-  end
->>>>>>> master
 end
