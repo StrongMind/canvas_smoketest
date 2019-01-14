@@ -3,6 +3,12 @@ require "json"
 require "selenium-webdriver"
 require "rspec"
 require 'examples/student_examples'
+<<<<<<< HEAD
+require 'examples/teacher_examples'
+require 'examples/admin_examples'
+# require 'katalon_helpers'
+=======
+>>>>>>> master
 include RSpec::Expectations
 
 def configure_driver
