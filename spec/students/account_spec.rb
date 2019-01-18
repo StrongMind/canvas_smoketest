@@ -74,5 +74,4 @@ describe "account as a student" do
     end
 
   end
-
 end
