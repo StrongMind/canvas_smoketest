@@ -1,4 +1,4 @@
-require 'spec_helper'
+# require 'spec_helper'
 
 describe "dashboard as a teacher" do
   before(:all) { configure_driver }
