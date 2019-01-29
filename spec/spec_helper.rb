@@ -5,12 +5,28 @@ require "rspec"
 require 'examples/student_examples'
 require 'examples/teacher_examples'
 require 'examples/admin_examples'
+require 'capybara'
+require 'chromedriver-helper'
 
 include RSpec::Expectations
 
+Capybara.register_driver(:headless_chrome) do |app|
+  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+    chromeOptions: { args: %w[headless disable-gpu] }
+  )
+
+  Capybara::Selenium::Driver.new(
+    app,
+    browser: :chrome,
+    desired_capabilities: capabilities
+  )
+end
+
+# Capybara.javascript_driver = :headless_chrome
+
 def configure_driver
-  options = Selenium::WebDriver::Firefox::Options.new(args: [ENV['SHOW_BROWSER'] ? nil : '-headless'])
-  @driver = Selenium::WebDriver.for :firefox, options: options
+  options = Selenium::WebDriver::Chrome::Options.new(args: [ENV['SHOW_BROWSER'] ? nil : '-headless'])
+  @driver = Selenium::WebDriver.for :chrome, options: options
   @accept_next_alert = true
   @driver.manage.timeouts.implicit_wait = 30
   @base_url = "https://courseware-staging.strongmind.com/"
