@@ -1,38 +1,24 @@
 require 'spec_helper'
 
-describe "enrollments after course starts" do
+describe "course people as a teacher" do
   before(:all) { configure_driver }
-  # after(:all)  { @driver.quit }
+  after(:all)  { @driver.quit }
 
-  let(:user_name) {
-    SecureRandom.hex(5)
-  }
-  let(:email) { "#{user_name}@example.com" }
+  include_examples "teacher login"
 
-  # include_examples "teacher login"
-  context 'creating late starting student' do
-    include_examples "admin login"
-
-    it '' do
-      @driver.find_element(class: 'ic-DashboardCard__header-title').click
-      @driver.find_element(class: 'people').click
-      @driver.find_element(id: 'addUsers').click
-      @driver.find_element(tag_name: 'textarea').send_keys(email)
-      @driver.find_element(id: 'addpeople_next').click
-      @driver.find_element(css: "button[data-address]").click
-      @driver.find_element(css: "input[data-address]").send_keys("#{user_name} smoketest")
-      @driver.find_element(id: 'addpeople_next').click
-      @driver.find_element(id: 'addpeople_next').click
-      @driver.find_element(css: 'form[ref="logoutForm"]').submit
-    end
+  before(:all) do
+    @driver.find_element(class: 'ic-DashboardCard__header-title').click
+    @driver.find_element(:css, "a.people").click
   end
 
-  context 'viewing student due dates' do
-    include_examples "teacher login"
-
-    it do
-      @driver.find_element(class: 'ic-DashboardCard__header-title').click
-      @driver.find_element(class: 'people').click
+  context 'I can configure people in my course' do
+    it 'I can add people to my course' do
+      expect { @driver.find_element(:css, "a#addUsers") }.to_not raise_error
     end
+
+    it 'I can control the sequence control settings for my students' do
+      expect { @driver.find_element(:css, "td.seqControl") }.to_not raise_error
+    end
+
   end
 end
