@@ -4,6 +4,7 @@ require "selenium-webdriver"
 require "rspec"
 require 'examples/student_examples'
 require 'examples/teacher_examples'
+require 'examples/admin_examples'
 require 'chromedriver-helper'
 require 'capybara'
 # require 'katalon_helpers'
