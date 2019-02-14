@@ -25,8 +25,10 @@ include RSpec::Expectations
 # Capybara.javascript_driver = :headless_chrome
 
 def configure_driver
+  @client = Selenium::WebDriver::Remote::Http::Default.new
+  @client.read_timeout = 120
   options = Selenium::WebDriver::Firefox::Options.new(args: [ENV['SHOW_BROWSER'] ? nil : '--headless'])
-  @driver = Selenium::WebDriver.for :firefox, options: options
+  @driver = Selenium::WebDriver.for :firefox, options: options, http_client: @client
   @accept_next_alert = true
   @driver.manage.timeouts.implicit_wait = 60
   @base_url = "https://courseware-staging.strongmind.com/"
