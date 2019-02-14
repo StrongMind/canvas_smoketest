@@ -27,6 +27,7 @@ include RSpec::Expectations
 def configure_driver
   @client = Selenium::WebDriver::Remote::Http::Default.new
   @client.read_timeout = 120
+  @client.open_timeout = 120
   options = Selenium::WebDriver::Firefox::Options.new(args: [ENV['SHOW_BROWSER'] ? nil : '--headless'])
   @driver = Selenium::WebDriver.for :firefox, options: options, http_client: @client
   @accept_next_alert = true
