@@ -43,6 +43,7 @@ describe "discussion boards as a student" do
     end
 
     it 'I can see posts and replies in a hierarchal manner' do
+      wait_for_link('discussion')
       @driver.find_element(:link, "Discussion: Hymn to the Nile - Hymn to the Nile").click
       expect { @driver.find_element(:css, "ul.discussion-entries") }.to_not raise_error
     end

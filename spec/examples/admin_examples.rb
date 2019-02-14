@@ -7,5 +7,6 @@ RSpec.shared_examples "admin login" do
     @driver.find_element(:name, "pseudonym_session[password]").clear
     @driver.find_element(:name, "pseudonym_session[password]").send_keys ENV['ADMIN_PASSWORD']
     @driver.find_element(:xpath, "//button[@type='submit']").click
+    wait_for_link("courses")
   end
 end

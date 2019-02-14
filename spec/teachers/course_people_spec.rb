@@ -13,7 +13,7 @@ describe "enrollments after course starts" do
   context 'creating late starting student' do
     include_examples "admin login"
 
-    xit '' do
+    it 'Creates an enrollment' do
       @driver.find_element(class: 'ic-DashboardCard__header-title').click
       @driver.find_element(class: 'people').click
       @driver.find_element(id: 'addUsers').click
@@ -30,7 +30,7 @@ describe "enrollments after course starts" do
   context 'viewing student due dates' do
     include_examples "teacher login"
 
-    xit do
+    it do
       @driver.find_element(class: 'ic-DashboardCard__header-title').click
       @driver.find_element(class: 'people').click
     end

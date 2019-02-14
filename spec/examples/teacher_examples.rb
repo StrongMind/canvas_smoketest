@@ -7,5 +7,6 @@ RSpec.shared_examples "teacher login" do
     @driver.find_element(:name, "pseudonym_session[password]").clear
     @driver.find_element(:name, "pseudonym_session[password]").send_keys "Test1234"
     @driver.find_element(:id, "login_form").submit
+    wait_for_link("courses")
   end
 end
