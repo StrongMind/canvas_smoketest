@@ -28,7 +28,7 @@ def configure_driver
   options = Selenium::WebDriver::Firefox::Options.new(args: [ENV['SHOW_BROWSER'] ? nil : '--headless'])
   @driver = Selenium::WebDriver.for :firefox, options: options
   @accept_next_alert = true
-  @driver.manage.timeouts.implicit_wait = 30
+  @driver.manage.timeouts.implicit_wait = 60
   @base_url = "https://courseware-staging.strongmind.com/"
 end
 
