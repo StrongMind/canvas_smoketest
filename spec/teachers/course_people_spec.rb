@@ -30,7 +30,7 @@ describe "enrollments after course starts" do
   context 'Adds another person and can delete them' do
     include_examples "admin login"
 
-    it '' do
+    it 'Creates and deletes an enrollment' do
       @driver.find_element(class: 'ic-DashboardCard__header-title').click
       @driver.find_element(class: 'people').click
 
