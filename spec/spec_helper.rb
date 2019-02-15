@@ -29,10 +29,11 @@ def configure_driver
   @client.read_timeout = 120
   @client.open_timeout = 120
   options = Selenium::WebDriver::Firefox::Options.new(args: [ENV['SHOW_BROWSER'] ? nil : '--headless'])
-  @driver = Selenium::WebDriver.for :firefox, options: options, http_client: @client
+  @base_url = "https://courseware-staging.strongmind.com/"
+  @driver = Selenium::WebDriver.for :remote, url: @base_url, desired_capabilities: :firefox, options: options
+  #@driver = Selenium::WebDriver.for :firefox, options: options, http_client: @client
   @accept_next_alert = true
   @driver.manage.timeouts.implicit_wait = 60
-  @base_url = "https://courseware-staging.strongmind.com/"
 end
 
 def close_alert_and_get_its_text
