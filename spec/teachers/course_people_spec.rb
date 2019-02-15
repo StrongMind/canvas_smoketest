@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "enrollments after course starts" do
   before(:all) { configure_driver }
-  # after(:all)  { @driver.quit }
+  after(:all)  { @driver.quit }
 
   let(:user_name) {
     SecureRandom.hex(5)
