@@ -13,7 +13,7 @@ describe "enrollments after course starts" do
   context 'creating late starting student' do
     include_examples "admin login"
 
-    it 'Creates a starter' do
+    xit 'Creates a starter' do
       @driver.find_element(class: 'ic-DashboardCard__header-title').click
       @driver.find_element(class: 'people').click
       @driver.find_element(id: 'addUsers').click
@@ -43,7 +43,7 @@ describe "enrollments after course starts" do
       @driver.find_element(id: 'addpeople_next').click
 
       course_id = @driver.current_url.split("/")[-2]
-      @driver.get("https://courseware-dev.strongmind.com/courses/#{course_id}/conclude_users")
+      @driver.get("https://courseware-staging.strongmind.com/courses/#{course_id}/conclude_users")
       @driver.find_element(css: '[name="enrollment_ids[]"]').click
       @driver.find_element(css: '[action*="conclude_users"]').submit
     end

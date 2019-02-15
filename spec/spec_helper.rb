@@ -29,7 +29,7 @@ def configure_driver
   @driver = Selenium::WebDriver.for :firefox, options: options
   @accept_next_alert = true
   @driver.manage.timeouts.implicit_wait = 30
-  @base_url = "https://courseware-dev.strongmind.com/"
+  @base_url = "https://courseware-staging.strongmind.com/"
 end
 
 def close_alert_and_get_its_text
@@ -45,4 +45,9 @@ def close_alert_and_get_its_text
   ensure
     @accept_next_alert = true
   end
+end
+
+def wait_for_link(link_name)
+  wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+  wait.until { @driver.find_element(css: "a[href*='#{link_name}']") }
 end
