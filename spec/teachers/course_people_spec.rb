@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "enrollments after course starts" do
   before(:all) { configure_driver }
-  after(:all)  { @driver.quit }
+  # after(:all)  { @driver.quit }
 
   let(:user_name) {
     SecureRandom.hex(5)
@@ -13,7 +13,7 @@ describe "enrollments after course starts" do
   context 'creating late starting student' do
     include_examples "admin login"
 
-    xit 'Creates a starter' do
+    it 'Creates a starter' do
       @driver.find_element(class: 'ic-DashboardCard__header-title').click
       @driver.find_element(class: 'people').click
       @driver.find_element(id: 'addUsers').click
@@ -52,7 +52,7 @@ describe "enrollments after course starts" do
   context 'viewing student due dates' do
     include_examples "teacher login"
 
-    xit do
+    it do
       @driver.find_element(class: 'ic-DashboardCard__header-title').click
       @driver.find_element(class: 'people').click
     end

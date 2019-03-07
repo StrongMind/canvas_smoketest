@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "course overview as a student" do
   before(:all) { configure_driver }
-  after(:all)  { @driver.quit }
+  # after(:all)  { @driver.quit }
 
   include_examples "student login"
 

@@ -48,6 +48,6 @@ def close_alert_and_get_its_text
 end
 
 def wait_for_link(link_name)
-  wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+  wait = Selenium::WebDriver::Wait.new(:timeout => 30)
   wait.until { @driver.find_element(css: "a[href*='#{link_name}']") }
 end
