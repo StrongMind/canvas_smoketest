@@ -8,7 +8,6 @@ describe "course overview as a teacher" do
 
   before(:all) do
     @driver.find_element(class: 'ic-DashboardCard__header-title').click
-    # byebug
   end
 
   context 'I can interact with my modules' do
