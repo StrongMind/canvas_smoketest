@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "dashboard as a teacher" do
   before(:all) { configure_driver }
-  # after(:all)  { @driver.quit }
+  after(:all)  { @driver.quit unless ENV['KEEP_BROWSERS'] }
 
   include_examples "teacher login"
 

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "A student logging in" do
   before(:all) { configure_driver }
-  # after(:all)  { @driver.quit }
+  after(:all)  { @driver.quit unless ENV['KEEP_BROWSERS'] }
   include_examples "student login"
 
   it 'I can login' do
@@ -14,7 +14,7 @@ end
 
 describe 'a student trying to login with missing credentials' do
   before(:all) { configure_driver }
-  # after(:all)  { @driver.quit }
+  after(:all)  { @driver.quit unless ENV['KEEP_BROWSERS'] }
   before do
     @driver.get "https://courseware-staging.strongmind.com/login/canvas"
     @driver.find_element(:xpath, "//button[@type='submit']").click
