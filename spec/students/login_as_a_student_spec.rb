@@ -6,6 +6,7 @@ describe "A student logging in" do
   include_examples "student login"
 
   it 'I can login' do
+    wait_for_link('course')
     expect {
       @driver.find_element(:class, "ic-Dashboard-header__title")
     }.to_not raise_error
