@@ -45,5 +45,11 @@ describe "gradebook as a student" do
       @driver.find_element(:id, "show_all_details_button").click
     end
 
+
+    it "contains a submitted assignment" do
+      submitted_at = @driver.find_element(:css, "#submission_51383 td.due:nth-of-type(2)")
+      sleep(1)
+      expect(submitted_at.text).to eq("Nov 8, 2018 at 10:41am")
+    end
   end
 end
