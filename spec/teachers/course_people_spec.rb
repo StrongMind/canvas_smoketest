@@ -57,4 +57,26 @@ describe "enrollments after course starts" do
       @driver.find_element(class: 'people').click
     end
   end
+
+  context 'while masquerading' do
+    include_examples "admin login"
+
+    it "does not update last_activity_at" do
+      @driver.get("https://courseware-staging.strongmind.com/users/640")
+      wait_for_link("become_user_id")
+      @driver.find_element(css: '[href*="?become_user_id=640"]').click
+      wait_for_link("masquerade")
+      @driver.find_element(css: '[href*="masquerade"]').click
+
+      @driver.find_element(class: 'ic-DashboardCard__header-title').click
+      @driver.find_element(class: 'people').click
+
+      wait_for_link("/1/masquerade")
+      @driver.find_element(css: '[href*="masquerade"]').click
+
+      wait_for_link("564")
+      expect(@driver.page_source).to include("Mar 29 at 10:52am")
+    end
+
+  end
 end
