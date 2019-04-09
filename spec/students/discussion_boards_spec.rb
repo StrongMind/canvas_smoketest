@@ -33,6 +33,7 @@ describe "discussion boards as a student" do
     end
 
     it 'I can delete my post' do
+      sleep(3)
       @driver.find_element(:xpath, "(.//*[normalize-space(text()) and normalize-space(.)='Press the comma key or shift + question mark to see a list of keyboard shortcuts'])[1]/following::i[3]").click
       @driver.find_element(:id, "ui-id-3").click
       close_alert_and_get_its_text
@@ -43,6 +44,7 @@ describe "discussion boards as a student" do
     end
 
     it 'I can see posts and replies in a hierarchal manner' do
+      sleep(3)
       @driver.find_element(:link, "Discussion: Hymn to the Nile - Hymn to the Nile").click
       expect { @driver.find_element(:css, "ul.discussion-entries") }.to_not raise_error
     end

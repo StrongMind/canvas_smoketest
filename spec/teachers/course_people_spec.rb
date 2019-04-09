@@ -47,7 +47,11 @@ describe "enrollments after course starts" do
       @driver.find_element(css: '[name="enrollment_ids[]"]').click
       @driver.find_element(css: '[action*="conclude_users"]').submit
     end
+  end
 
+  context "Conclude with Fakes" do
+    include_examples "admin login"
+    
     it "Does not count fake students" do
       @driver.find_element(class: 'ic-DashboardCard__header-title').click
       @driver.find_element(class: 'settings').click
@@ -56,6 +60,7 @@ describe "enrollments after course starts" do
       @driver.find_element(class: 'student_view_button').click
       wait_for_link("student_view")
       @driver.find_element(class: 'leave_student_view').click
+      sleep(1)
       @driver.get("https://courseware-staging.strongmind.com/courses/#{course_id}/conclude_users")
       expect(@driver.page_source).not_to include("Student, Test")
     end
