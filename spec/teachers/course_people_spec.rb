@@ -91,7 +91,7 @@ describe "enrollments after course starts" do
       wait_for_link("/1/masquerade")
       @driver.find_element(css: '[href*="masquerade"]').click
 
-      wait_for_link("564")
+      wait_for_link("640")
       expect(@driver.page_source).to include("Mar 29 at 10:52am")
     end
 
