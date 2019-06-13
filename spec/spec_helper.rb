@@ -59,6 +59,6 @@ RSpec.configure do |config|
   end
 
   config.after(:all) do
-    @driver.quit unless ENV['KEEP_BROWSERS']
+    @driver.quit if @driver && !ENV['KEEP_BROWSERS']
   end
 end
