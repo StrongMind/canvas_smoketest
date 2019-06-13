@@ -1,9 +1,6 @@
 require 'spec_helper'
 
 describe "discussion boards as a student" do
-  before(:all) { configure_driver }
-  after(:all)  { @driver.quit unless ENV['KEEP_BROWSERS'] }
-
   include_examples "student login"
 
   before(:all) do

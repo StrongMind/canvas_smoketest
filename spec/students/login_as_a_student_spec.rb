@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe "A student logging in" do
-  before(:all) { configure_driver }
-  after(:all)  { @driver.quit unless ENV['KEEP_BROWSERS'] }
   include_examples "student login"
 
   it 'I can login' do

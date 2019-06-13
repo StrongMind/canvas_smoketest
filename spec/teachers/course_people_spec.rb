@@ -1,9 +1,6 @@
 require 'spec_helper'
 
 describe "enrollments after course starts" do
-  before(:all) { configure_driver }
-  after(:all)  { @driver.quit unless ENV['KEEP_BROWSERS'] }
-
   let(:user_name) {
     SecureRandom.hex(5)
   }
@@ -51,7 +48,7 @@ describe "enrollments after course starts" do
 
   context "Conclude with Fakes" do
     include_examples "admin login"
-    
+
     it "Does not count fake students" do
       @driver.find_element(class: 'ic-DashboardCard__header-title').click
       @driver.find_element(class: 'settings').click

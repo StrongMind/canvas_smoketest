@@ -1,9 +1,6 @@
 require 'spec_helper'
 
 describe "course card as a student" do
-  before(:all) { configure_driver }
-  after(:all)  { @driver.quit unless ENV['KEEP_BROWSERS'] }
-
   include_examples "student login"
 
   it 'I can see a title' do

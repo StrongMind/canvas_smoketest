@@ -1,12 +1,13 @@
 require 'byebug'
-require "json"
-require "selenium-webdriver"
-require "rspec"
+require 'json'
+require 'selenium-webdriver'
+require 'rspec'
 require 'examples/student_examples'
 require 'examples/teacher_examples'
 require 'examples/admin_examples'
 require 'capybara'
 require 'chromedriver-helper'
+require 'pry'
 
 include RSpec::Expectations
 
@@ -28,7 +29,7 @@ def configure_driver
   options = Selenium::WebDriver::Firefox::Options.new(args: [ENV['SHOW_BROWSER'] ? nil : '--headless'])
   @driver = Selenium::WebDriver.for :firefox, options: options
   @accept_next_alert = true
-  @driver.manage.timeouts.implicit_wait = 30
+  @driver.manage.timeouts.implicit_wait = ENV['IMPLICIT_WAIT'] ? ENV['IMPLICIT_WAIT'].to_i : 30
   @base_url = "https://courseware-staging.strongmind.com/"
 end
 
@@ -50,4 +51,14 @@ end
 def wait_for_link(link_name)
   wait = Selenium::WebDriver::Wait.new(:timeout => 30)
   wait.until { @driver.find_element(css: "a[href*='#{link_name}']") }
+end
+
+RSpec.configure do |config|
+  config.before(:all) do
+    configure_driver
+  end
+
+  config.after(:all) do
+    @driver.quit unless ENV['KEEP_BROWSERS']
+  end
 end
