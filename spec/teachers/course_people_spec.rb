@@ -49,16 +49,25 @@ describe "enrollments after course starts" do
   context "Conclude with Fakes" do
     include_examples "admin login"
 
+    # this test needs more patience
+    before { @driver.manage.timeouts.implicit_wait = 30 }
+    after  { @driver.manage.timeouts.implicit_wait = @config.implicit_wait }
+
     it "Does not count fake students" do
       @driver.find_element(class: 'ic-DashboardCard__header-title').click
       @driver.find_element(class: 'settings').click
+
       course_id = @driver.current_url.split("/")[-2]
       wait_for_link("student_view")
+
       @driver.find_element(class: 'student_view_button').click
+
       wait_for_link("student_view")
+
       @driver.find_element(class: 'leave_student_view').click
       sleep(1)
       @driver.get("https://courseware-staging.strongmind.com/courses/#{course_id}/conclude_users")
+
       expect(@driver.page_source).not_to include("Student, Test")
     end
   end
@@ -67,13 +76,19 @@ describe "enrollments after course starts" do
     include_examples "teacher login"
 
     it do
-      @driver.find_element(class: 'ic-DashboardCard__header-title').click
-      @driver.find_element(class: 'people').click
+      wait_for 30 do
+        @driver.find_element(class: 'ic-DashboardCard__header-title').click
+        @driver.find_element(class: 'people').click
+      end
     end
   end
 
   context 'while masquerading' do
     include_examples "admin login"
+
+    # this test needs more patience
+    before { @driver.manage.timeouts.implicit_wait = 30 }
+    after  { @driver.manage.timeouts.implicit_wait = @config.implicit_wait }
 
     it "does not update last_activity_at" do
       @driver.get("https://courseware-staging.strongmind.com/users/640")
