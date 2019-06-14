@@ -1,3 +1,4 @@
+require 'dotenv/load'
 require 'byebug'
 require 'json'
 require 'selenium-webdriver'
