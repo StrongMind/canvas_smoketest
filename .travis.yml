@@ -10,5 +10,5 @@ before_install:
 install:
   - bundle install --path vendor/bundle --without production --jobs=3 --retry=1
 script:
-  - bundle exec rspec spec/
+  - bundle exec rspec spec/ --format documentation
 
