@@ -12,11 +12,13 @@ describe "course overview as a teacher" do
 
   context 'I can interact with my modules' do
     it 'I can add a module' do
+      sleep(10)
       @driver.find_element(class: 'add_module_link').click
       expect { @driver.find_element(class: 'submit_button') }.to_not raise_error
     end
 
     it 'I can edit and delete modules' do
+      @driver.navigate.refresh
       @driver.find_element(class: 'al-trigger').click
       expect { @driver.find_element(:css, "a.delete_item_link") }.to_not raise_error
       @driver.find_element(:css, "a.edit_module_link").click
