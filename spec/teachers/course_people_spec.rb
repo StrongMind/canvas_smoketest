@@ -88,6 +88,7 @@ describe "enrollments after course starts" do
       @driver.find_element(class: 'ic-DashboardCard__header-title').click
       @driver.find_element(class: 'people').click
 
+      sleep(5)
       wait_for_link("/1/masquerade")
       @driver.find_element(css: '[href*="masquerade"]').click
 
