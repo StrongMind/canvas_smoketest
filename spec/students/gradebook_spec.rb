@@ -29,8 +29,9 @@ describe "gradebook as a student" do
     end
 
     it 'I can toggle between calculate based on graded assessments or all assessments' do
-      @driver.find_element(:xpath, "(.//*[normalize-space(text()) and normalize-space(.)='Total'])[2]/following::label[1]").click
-      @driver.find_element(:xpath, "(.//*[normalize-space(text()) and normalize-space(.)='Total'])[2]/following::label[1]").click
+      wait_for_selector('#only_consider_graded_assignments_wrapper label')
+      @driver.find_element(:css, "#only_consider_graded_assignments_wrapper label").click
+      @driver.find_element(:css, "#only_consider_graded_assignments_wrapper label").click
     end
 
 #    it 'I can edit my grade in what-if mode and see how my overall grade changes' do

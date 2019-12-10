@@ -78,7 +78,7 @@ describe "enrollments after course starts" do
   context 'while masquerading' do
     include_examples "admin login"
 
-    it "does not update last_activity_at" do
+    xit "does not update last_activity_at" do
       @driver.get("https://courseware-staging.strongmind.com/users/640")
       wait_for_link("become_user_id")
       @driver.find_element(css: '[href*="?become_user_id=640"]').click

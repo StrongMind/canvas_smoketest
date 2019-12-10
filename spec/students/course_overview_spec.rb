@@ -104,16 +104,19 @@ describe "course overview as a student" do
 
       it "I can click and view the homepage of the course" do
         @driver.find_element(:link, "Home").click
+       wait_for_selector('#course_home_content')
         expect { @driver.find_element(id: 'course_home_content') }.to_not raise_error
       end
 
       it "I can click and view the grades in the course" do
         @driver.find_element(:css, "a.grades").click
+       wait_for_selector('#print-grades-button-container')
         expect { @driver.find_element(:id, "print-grades-button-container") }.to_not raise_error
       end
 
       it "I can click and view the syllabus in the course" do
         @driver.find_element(:link, "Syllabus").click
+       wait_for_selector('#course_syllabus')
         expect { @driver.find_element(id: 'course_syllabus') }.to_not raise_error
       end
     end

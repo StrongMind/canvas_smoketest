@@ -44,6 +44,7 @@ describe "account as a student" do
 
     it 'I can view events and due dates for assignments in my courses - WHEN THIS FAILS, CHANGE THE DUE DATES IN RTC-102' do
       # FIXME set up in a brittle way. fix this with factories to set up a course
+      sleep 5
       expect { @driver.find_element(:css, "i.icon-assignment") }.to_not raise_error
       expect { @driver.find_element(:css, "span.fc-time") }.to_not raise_error
       expect { @driver.find_element(:css, "span.fc-title") }.to_not raise_error
